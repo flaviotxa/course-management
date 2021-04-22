@@ -8,7 +8,7 @@ import { newCourse } from "../../../tools/mockData";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 
-function ManageCoursePage({
+export function ManageCoursePage({
   courses,
   authors,
   loadAuthors,
@@ -101,8 +101,8 @@ export function getCourseBySlug(courses, slug) {
   return courses.find((course) => course.slug === slug) || null;
 }
 
-function mapStateToProps(state, onProps) {
-  const slug = onProps.match.params.slug;
+function mapStateToProps(state, ownProps) {
+  const slug = ownProps.match.params.slug;
   const course =
     slug && state.courses.length > 0
       ? getCourseBySlug(state.courses, slug)
